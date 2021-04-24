@@ -1,0 +1,64 @@
+###
+GET http://localhost:3000/
+
+###
+GET http://localhost:3000/catalogo/listar-filme/60847528cd75e91510a13090
+
+###
+POST http://localhost:3000/catalogo/cadastrar-filme
+Content-Type: application/json
+
+{
+    "titulo": "Barbie",
+    "status": "DISPONÍVEL",
+    "descricao": "barbie",
+    "duracao":"1H30M",
+    "genero": "aventura"
+  
+}
+
+###
+DELETE http://localhost:3000/catalogo/excluir-filme?id=60847b581a8124355caaa301
+
+###
+PUT http://localhost:3000/catalogo/editar-filme?id=60847528cd75e91510a13090
+Content-Type: application/json
+
+{
+    "titulo": "Barbie",
+    "status": "DISPONÍVEL",
+    "descricao": "barbie",
+    "duracao":"1H30M",
+    "genero": "aventura"
+  
+}
+
+###
+GET http://localhost:3000/catalogo/locacao
+
+###
+GET http://localhost:3000/catalogo/listar-locacao/6084790bb3dc7a1bc07959df
+
+
+###
+POST http://localhost:3000/catalogo/cadastrar-locacao
+Content-Type: application/json
+
+{
+  "data": "2000/01/01",
+  "cliente": "Thainá",
+  "filme": "60847528cd75e91510a13090"
+}
+
+###
+DELETE http://localhost:3000/catalogo/excluir-locacao?id=6084790bb3dc7a1bc07959df
+
+###
+PUT http://localhost:3000/catalogo/editar-locacao?id=6084790bb3dc7a1bc07959df
+Content-Type: application/json
+
+{
+  "data": "2000/01/01",
+  "cliente": "João",
+  "filme": "60847528cd75e91510a13090"
+}
