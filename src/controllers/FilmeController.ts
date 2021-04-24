@@ -59,14 +59,10 @@ class FilmeController {
       const id = { _id: request.query.id };
       const body = request.body;
 
-      const result = await filme.findById(id);
-      result.genero = body.genero;
-      result.status = body.status;
-      result.descricao = body.descricao;
-      result.duracao = body.duracao;
-      result.titulo = body.titulo;
-
-      const catalogo = await filme.updateOne(id, result);
+      const catalogo = await filme.findOneAndUpdate(id, body, {
+        returnOriginal: false,
+        useFindAndModify: false,
+      });
 
       response.status(204).json({
         data: catalogo,

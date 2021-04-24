@@ -42,13 +42,11 @@ class LocacaoController {
     try {
       const id = request.query.id;
       const catalogo = await locacaoSchema.findByIdAndDelete(id);
-      response
-        .status(201)
-        .json({
-          data: catalogo,
-          error: false,
-          msg: "Filme excluído com sucesso",
-        });
+      response.status(201).json({
+        data: catalogo,
+        error: false,
+        msg: "Filme excluído com sucesso",
+      });
     } catch (error) {
       response
         .status(400)
@@ -61,12 +59,10 @@ class LocacaoController {
       const id = { _id: request.query.id };
       const body = request.body;
 
-      const result = await locacaoSchema.findById(id);
-      result.filme = body.filme;
-      result.cliente = body.cliente;
-      result.data = body.data;
-
-      const catalogo = await locacaoSchema.updateOne(id, result);
+      const catalogo = await locacaoSchema.findOneAndUpdate(id, body, {
+        returnOriginal: false,
+        useFindAndModify: false,
+      });
 
       response.status(204).json({
         data: catalogo,

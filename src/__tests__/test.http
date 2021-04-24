@@ -9,11 +9,11 @@ POST http://localhost:3000/catalogo/cadastrar-filme
 Content-Type: application/json
 
 {
-    "titulo": "Barbie",
+    "titulo": "Toy Story",
     "status": "DISPONÍVEL",
-    "descricao": "barbie",
+    "descricao": "Toy Story",
     "duracao":"1H30M",
-    "genero": "aventura"
+    "genero": "Animação"
   
 }
 
@@ -25,11 +25,11 @@ PUT http://localhost:3000/catalogo/editar-filme?id=60847528cd75e91510a13090
 Content-Type: application/json
 
 {
-    "titulo": "Barbie",
+    "titulo": "Crespúsculo",
     "status": "DISPONÍVEL",
-    "descricao": "barbie",
+    "descricao": "Crepúsculo",
     "duracao":"1H30M",
-    "genero": "aventura"
+    "genero": "Romance"
   
 }
 
