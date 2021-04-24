@@ -20,7 +20,8 @@ const FilmeSchema = new Schema(
     },
     status: {
       type: String,
-      required: [true, "O campo STATUS é obrigatório!"],
+      enum: ["DISPONÍVEL", "LOCADO"],
+      uppercase: true,
     },
   },
   {
