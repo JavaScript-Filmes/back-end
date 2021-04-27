@@ -34,7 +34,7 @@ class LocacaoController {
       const catalogo = await locacaoSchema.create(request.body);
       response.status(201).json({ data: catalogo });
     } catch (error) {
-      response.status(201).json({ data: `${error.message}` });
+      response.status(400).json({ error: true, data: `${error.message}` });
     }
   }
 
@@ -70,7 +70,7 @@ class LocacaoController {
         msg: "Locação editada com sucesso",
       });
     } catch (error) {
-      response.status(201).json({ error: `${error.message}` });
+      response.status(400).json({ error: true, msg: `${error.message}` });
     }
   }
 }
