@@ -1,3 +1,5 @@
+# REQUESTS FILMES
+
 ###
 GET http://localhost:3000/
 
@@ -33,6 +35,8 @@ Content-Type: application/json
   
 }
 
+# REQUESTS LOCAÇÃO
+
 ###
 GET http://localhost:3000/catalogo/locacao
 
@@ -46,7 +50,7 @@ Content-Type: application/json
 
 {
   "data": "2000/01/01",
-  "cliente": "Thainá",
+  "cliente": "60875c5936e03c181c4ab838",
   "filme": "60847528cd75e91510a13090"
 }
 
@@ -54,11 +58,40 @@ Content-Type: application/json
 DELETE http://localhost:3000/catalogo/excluir-locacao?id=6084790bb3dc7a1bc07959df
 
 ###
-PUT http://localhost:3000/catalogo/editar-locacao?id=6084790bb3dc7a1bc07959df
+PUT http://localhost:3000/catalogo/editar-locacao?id=6087693eccf36b3180093839
 Content-Type: application/json
 
 {
-  "data": "2000/01/01",
-  "cliente": "João",
+  "data": "2010/10/10",
+  "cliente": "60875c5936e03c181c4ab838",
   "filme": "60847528cd75e91510a13090"
 }
+
+# REQUEST USUARIO
+
+
+###
+GET http://localhost:3000/catalogo/cliente
+
+###
+POST http://localhost:3000/catalogo/cadastrar-usuario
+Content-Type: application/json
+
+{
+  "usuario": "admin1",
+  "senha": "admin1"
+}
+
+# REQUEST FAVORITOS
+
+###
+POST http://localhost:3000/catalogo/cadastrar-favorito
+Content-Type: application/json
+
+{
+  "filme": "60849dbf91a62c1d94ccb4e3",
+  "cliente": "60875c5936e03c181c4ab838"
+}
+
+###
+DELETE http://localhost:3000/catalogo/excluir-favorito?id=60875ea24ca0e825f422ebaa
