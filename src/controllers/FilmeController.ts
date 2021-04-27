@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { filme } from "../models/FilmeSchema";
+import { filmeSchema } from "../models/FilmeSchema";
 
 class FilmeController {
   async listar(request: Request, response: Response) {
     try {
-      const catalogo = await filme.find();
+      const catalogo = await filmeSchema.find();
       response
         .status(200)
         .json({ data: catalogo, error: false, msg: "Filmes encontrados" });
@@ -18,7 +18,7 @@ class FilmeController {
   async listarPorId(request: Request, response: Response) {
     try {
       const { id } = request.params;
-      const catalogo = await filme.find({ _id: id });
+      const catalogo = await filmeSchema.find({ _id: id });
       response
         .status(201)
         .json({ data: catalogo, error: false, msg: "Filme encontrado" });
@@ -31,17 +31,17 @@ class FilmeController {
 
   async cadastrar(request: Request, response: Response) {
     try {
-      const catalogo = await filme.create(request.body);
+      const catalogo = await filmeSchema.create(request.body);
       response.status(201).json({ data: catalogo });
     } catch (error) {
-      response.status(201).json({ data: `${error.message}` });
+      response.status(400).json({ data: `${error.message}` });
     }
   }
 
   async excluir(request: Request, response: Response) {
     try {
       const id = request.query.id;
-      const catalogo = await filme.findByIdAndDelete(id);
+      const catalogo = await filmeSchema.findByIdAndDelete(id);
       response.status(201).json({
         data: catalogo,
         error: false,
@@ -59,7 +59,7 @@ class FilmeController {
       const id = { _id: request.query.id };
       const body = request.body;
 
-      const catalogo = await filme.findOneAndUpdate(id, body, {
+      const catalogo = await filmeSchema.findOneAndUpdate(id, body, {
         returnOriginal: false,
         useFindAndModify: false,
       });
@@ -67,10 +67,10 @@ class FilmeController {
       response.status(204).json({
         data: catalogo,
         error: false,
-        msg: "Filme editado com sucesso",
+        msg: "Locação editada com sucesso",
       });
     } catch (error) {
-      response.status(201).json({ error: `${error.message}` });
+      response.status(400).json({ error: `${error.message}` });
     }
   }
 }
