@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const FilmeSchema = new Schema(
+const filme = new Schema(
   {
     titulo: {
       type: String,
@@ -23,12 +23,15 @@ const FilmeSchema = new Schema(
       enum: ["DISPONÍVEL", "LOCADO"],
       uppercase: true,
     },
+    diretor: {
+      type: String,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-var filme = mongoose.model("Filme", FilmeSchema);
+var filmeSchema = mongoose.model("Filme", filme);
 
-export { filme };
+export { filmeSchema };

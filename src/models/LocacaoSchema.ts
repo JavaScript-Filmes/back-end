@@ -6,10 +6,7 @@ const locacaoSchema = new Schema(
       type: Date,
       required: [true, "O campo DATA é obrigatório!"],
     },
-    cliente: {
-      type: String,
-      required: [true, "O campo CLIENTE é obrigatório!"],
-    },
+    cliente: [{ type: Schema.Types.ObjectId, ref: "Cliente" }],
     filme: [{ type: Schema.Types.ObjectId, ref: "Filme" }],
   },
   {
