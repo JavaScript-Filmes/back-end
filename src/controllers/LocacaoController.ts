@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import locacaoSchema from "../models/LocacaoSchema";
+import filmeSchema from "../models/FilmeSchema";
 
 class LocacaoController {
   async listar(request: Request, response: Response) {
@@ -31,8 +32,34 @@ class LocacaoController {
 
   async cadastrar(request: Request, response: Response) {
     try {
-      const catalogo = await locacaoSchema.create(request.body);
-      response.status(201).json({ data: catalogo });
+      const list = await filmeSchema.findById({ _id: request.body.filme });
+
+      if (list && list.status === "DISPONÍVEL") {
+        try {
+          await filmeSchema.updateOne(
+            { _id: request.body.filme },
+            { $set: { status: "LOCADO" } }
+          );
+
+          const catalogo = await locacaoSchema.create(request.body);
+
+          response.status(201).json({
+            data: catalogo,
+            error: false,
+            msg: "Locação cadastrada com sucesso",
+          });
+        } catch (error) {
+          response.status(409).json({
+            error: true,
+            msg: "Erro! Não foi possível realizar este cadastro de locação.",
+          });
+        }
+      } else {
+        response.status(409).json({
+          error: true,
+          msg: "Erro! Este filme não pode ser locado no momento.",
+        });
+      }
     } catch (error) {
       response.status(400).json({ error: true, data: `${error.message}` });
     }
@@ -45,12 +72,12 @@ class LocacaoController {
       response.status(201).json({
         data: catalogo,
         error: false,
-        msg: "Filme excluído com sucesso",
+        msg: "Locação excluída com sucesso",
       });
     } catch (error) {
       response
         .status(400)
-        .json({ error: true, msg: "Não foi possível excluir o filme" });
+        .json({ error: true, msg: "Não foi possível excluir esta locação" });
     }
   }
 
