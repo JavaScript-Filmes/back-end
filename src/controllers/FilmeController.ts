@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { filmeSchema } from "../models/FilmeSchema";
+import filmeSchema from "../models/FilmeSchema";
 
 class FilmeController {
   async listar(request: Request, response: Response) {
