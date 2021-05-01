@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const filme = new Schema(
+const filmeSchema = new Schema(
   {
     titulo: {
       type: String,
@@ -32,6 +32,8 @@ const filme = new Schema(
   }
 );
 
-var filmeSchema = mongoose.model("Filme", filme);
+interface FilmeInterface extends Document {
+  status: string;
+}
 
-export { filmeSchema };
+export default mongoose.model<FilmeInterface>("Filme", filmeSchema);
