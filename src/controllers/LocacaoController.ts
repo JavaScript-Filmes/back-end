@@ -10,9 +10,11 @@ class LocacaoController {
         .status(200)
         .json({ data: catalogo, error: false, msg: "Locações encontradas" });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível localizar as locações" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível localizar as locações",
+      });
     }
   }
 
@@ -24,9 +26,11 @@ class LocacaoController {
         .status(201)
         .json({ data: catalogo, error: false, msg: "Locação encontrado" });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível localizar esta locação" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível localizar esta locação",
+      });
     }
   }
 
@@ -49,7 +53,7 @@ class LocacaoController {
             msg: "Locação cadastrada com sucesso",
           });
         } catch (error) {
-          response.status(409).json({
+          response.status(400).json({
             error: true,
             msg: "Erro! Não foi possível realizar este cadastro de locação.",
           });
@@ -61,7 +65,11 @@ class LocacaoController {
         });
       }
     } catch (error) {
-      response.status(400).json({ error: true, data: `${error.message}` });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível buscar o filme.",
+      });
     }
   }
 
@@ -75,9 +83,11 @@ class LocacaoController {
         msg: "Locação excluída com sucesso",
       });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível excluir esta locação" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível excluir esta locação",
+      });
     }
   }
 
@@ -86,18 +96,18 @@ class LocacaoController {
       const { id } = request.params;
       const body = request.body;
 
-      const catalogo = await locacaoSchema.findOneAndUpdate({_id: id}, body, {
+      await locacaoSchema.findOneAndUpdate({ _id: id }, body, {
         returnOriginal: false,
         useFindAndModify: false,
       });
 
-      response.status(204).json({
-        data: catalogo,
-        error: false,
-        msg: "Locação editada com sucesso",
-      });
+      response.status(204).json({});
     } catch (error) {
-      response.status(400).json({ error: true, msg: `${error.message}` });
+      response.status(400).json({
+        error: true,
+        data: error.message,
+        msg: "Não foi possível concluir esta edição.",
+      });
     }
   }
 }
