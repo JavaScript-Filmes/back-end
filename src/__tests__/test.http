@@ -55,10 +55,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/catalogo/excluir-locacao?id=6084790bb3dc7a1bc07959df
+DELETE http://localhost:3000/catalogo/excluir-locacao/6084790bb3dc7a1bc07959df
 
 ###
-PUT http://localhost:3000/catalogo/editar-locacao?id=6087693eccf36b3180093839
+PUT http://localhost:3000/catalogo/editar-locacao/6087693eccf36b3180093839
 Content-Type: application/json
 
 {
