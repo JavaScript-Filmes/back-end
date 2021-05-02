@@ -20,10 +20,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/catalogo/excluir-filme?id=60847b581a8124355caaa301
+DELETE http://localhost:3000/catalogo/excluir-filme/60847b581a8124355caaa301
 
 ###
-PUT http://localhost:3000/catalogo/editar-filme?id=60847528cd75e91510a13090
+PUT http://localhost:3000/catalogo/editar-filme/60847528cd75e91510a13090
 Content-Type: application/json
 
 {
