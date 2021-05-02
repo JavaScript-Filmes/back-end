@@ -9,9 +9,11 @@ class FilmeController {
         .status(200)
         .json({ data: catalogo, error: false, msg: "Filmes encontrados" });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível encontrar filmes" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível encontrar filmes",
+      });
     }
   }
 
@@ -23,24 +25,34 @@ class FilmeController {
         .status(201)
         .json({ data: catalogo, error: false, msg: "Filme encontrado" });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível encontrar este filme" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível encontrar este filme",
+      });
     }
   }
 
   async cadastrar(request: Request, response: Response) {
     try {
       const catalogo = await filmeSchema.create(request.body);
-      response.status(201).json({ data: catalogo });
+      response.status(201).json({
+        data: catalogo,
+        error: false,
+        msg: "Filme cadastrado com sucesso",
+      });
     } catch (error) {
-      response.status(400).json({ data: `${error.message}` });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível concluir este cadastro",
+      });
     }
   }
 
   async excluir(request: Request, response: Response) {
     try {
-      const {id} = request.params;
+      const { id } = request.params;
       const catalogo = await filmeSchema.findByIdAndDelete(id);
       response.status(201).json({
         data: catalogo,
@@ -48,9 +60,11 @@ class FilmeController {
         msg: "Filme excluído com sucesso",
       });
     } catch (error) {
-      response
-        .status(400)
-        .json({ error: true, msg: "Não foi possível excluir o filme" });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível excluir o filme",
+      });
     }
   }
 
@@ -70,7 +84,11 @@ class FilmeController {
         msg: "Locação editada com sucesso",
       });
     } catch (error) {
-      response.status(400).json({ error: `${error.message}` });
+      response.status(400).json({
+        data: error.message,
+        error: true,
+        msg: "Não foi possível realizar esta edição",
+      });
     }
   }
 }
