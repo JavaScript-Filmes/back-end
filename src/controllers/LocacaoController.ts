@@ -67,7 +67,7 @@ class LocacaoController {
 
   async excluir(request: Request, response: Response) {
     try {
-      const id = request.params;
+      const { id } = request.params;
       const catalogo = await locacaoSchema.findByIdAndDelete(id);
       response.status(201).json({
         data: catalogo,
@@ -83,10 +83,10 @@ class LocacaoController {
 
   async editar(request: Request, response: Response) {
     try {
-      const id = { _id: request.params };
+      const { id } = request.params;
       const body = request.body;
 
-      const catalogo = await locacaoSchema.findOneAndUpdate(id, body, {
+      const catalogo = await locacaoSchema.findOneAndUpdate({_id: id}, body, {
         returnOriginal: false,
         useFindAndModify: false,
       });
