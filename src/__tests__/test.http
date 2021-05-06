@@ -78,8 +78,8 @@ POST http://localhost:3000/catalogo/cadastrar-usuario
 Content-Type: application/json
 
 {
-  "usuario": "admin1",
-  "senha": "admin1"
+  "usuario": "admin",
+  "senha": "admin"
 }
 
 # REQUEST FAVORITOS
