@@ -7,8 +7,6 @@ Além disso terá a funcionalidade de locação, que funcionará marcando o stat
 
 Desenvolvido por:
 
-- Ana Carolina Simoni Ciampi
-
 - João Vitor Rodrigues Pereira
 
 - Maria Eduarda Mansur Fey
