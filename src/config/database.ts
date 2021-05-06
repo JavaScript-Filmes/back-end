@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 mongoose
   .connect(
-    "mongodb+srv://admin:admin@catalogo-filmes.2nzun.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://admin:admin@teste.s2o9d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
