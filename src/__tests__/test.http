@@ -23,15 +23,15 @@ Content-Type: application/json
 DELETE http://localhost:3000/catalogo/excluir-filme/60847b581a8124355caaa301
 
 ###
-PUT http://localhost:3000/catalogo/editar-filme/60847528cd75e91510a13090
+PUT http://localhost:3000/catalogo/editar-filme/608da0462bedc12ac4fe0721
 Content-Type: application/json
 
 {
-    "titulo": "Crespúsculo",
+    "titulo": "Cinderela",
     "status": "DISPONÍVEL",
-    "descricao": "Crepúsculo",
+    "descricao": "Cinderela",
     "duracao":"1H30M",
-    "genero": "Romance"
+    "genero": "Animação"
   
 }
 
@@ -50,8 +50,8 @@ Content-Type: application/json
 
 {
   "data": "2000/01/01",
-  "cliente": "60875c5936e03c181c4ab838",
-  "filme": "60847528cd75e91510a13090"
+  "cliente": "608d9bb70ad973364c60b2b5",
+  "filme": "608da0462bedc12ac4fe0721"
 }
 
 ###
@@ -78,8 +78,8 @@ POST http://localhost:3000/catalogo/cadastrar-usuario
 Content-Type: application/json
 
 {
-  "usuario": "admin1",
-  "senha": "admin1"
+  "usuario": "admin",
+  "senha": "admin"
 }
 
 # REQUEST FAVORITOS
@@ -89,8 +89,8 @@ POST http://localhost:3000/catalogo/cadastrar-favorito
 Content-Type: application/json
 
 {
-  "filme": "60849dbf91a62c1d94ccb4e3",
-  "cliente": "60875c5936e03c181c4ab838"
+  "filme": "608da0462bedc12ac4fe0721",
+  "cliente": "608d9bb70ad973364c60b2b5"
 }
 
 ###
