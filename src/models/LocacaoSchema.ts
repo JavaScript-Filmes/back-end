@@ -14,4 +14,4 @@ const locacaoSchema = new Schema(
   }
 );
 
-export default model("locacao", locacaoSchema);
+export default model("locacoes", locacaoSchema);
