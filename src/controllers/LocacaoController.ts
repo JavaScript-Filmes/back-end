@@ -74,25 +74,30 @@ class LocacaoController {
 
   async excluir(request: Request, response: Response) {
     try {
-      const list = await filmeSchema.findById({ _id: request.body.filme });
+      const { id } = request.params;
 
-      if (list && list.status === "LOCADO") {
+      let res: any;
+
+      res = await locacaoSchema.find({ _id: id });
+
+      try {
+        await filmeSchema.updateOne(
+          { _id: res[0].filme.join() },
+          { $set: { status: "DISPONÍVEL" } }
+        );
+
         try {
-          await filmeSchema.updateOne(
-            { _id: request.body.filme },
-            { $set: { status: "DISPONÍVEL" } }
-          );
-
-          const { id } = request.params;
           const catalogo = await locacaoSchema.findByIdAndDelete(id);
           response.status(201).json(catalogo);
-        } catch (error) {
-          response.status(400).json({
-            data: error.message,
-            error: true,
-            msg: "Não foi possível excluir esta locação",
-          });
+        } catch (er) {
+          console.log(er);
         }
+      } catch (error) {
+        response.status(400).json({
+          data: error.message,
+          error: true,
+          msg: "Não foi possível excluir esta locação",
+        });
       }
     } catch (error) {
       response.status(400).json({
