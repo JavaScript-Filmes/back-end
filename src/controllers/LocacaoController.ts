@@ -112,8 +112,6 @@ class LocacaoController {
 
       filmeAtual = await locacaoSchema.find({ _id: id });
 
-      console.log(filmeAtual[0].filme.join());
-
       await filmeSchema.updateOne(
         { _id: filmeAtual[0].filme.join() },
         { $set: { status: "DISPONÍVEL" } }
@@ -122,8 +120,6 @@ class LocacaoController {
       let filmeNovo: any;
 
       filmeNovo = request.body.filme;
-
-      console.log(filmeNovo);
 
       await filmeSchema.updateOne(
         { _id: filmeNovo },
