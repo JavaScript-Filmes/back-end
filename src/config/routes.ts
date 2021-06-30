@@ -26,10 +26,12 @@ router.put("/catalogo/editar-locacao/:id", locacaoController.editar);
 
 // Rotas endpoint de usuário
 router.get("/catalogo/cliente", clienteController.listar);
+router.get("/catalogo/listar-cliente/:id", clienteController.listarPorId);
 router.post("/catalogo/cadastrar-usuario", clienteController.cadastrar);
 
 // Rotas endpoint de favoritos
+router.get("/catalogo/favorito", favoritoController.listar);
 router.post("/catalogo/cadastrar-favorito", favoritoController.cadastrar);
-router.delete("/catalogo/excluir-favorito", favoritoController.excluir);
+router.delete("/catalogo/excluir-favorito/:id", favoritoController.excluir);
 
 export { router };

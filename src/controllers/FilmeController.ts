@@ -5,9 +5,8 @@ class FilmeController {
   async listar(request: Request, response: Response) {
     try {
       const catalogo = await filmeSchema.find();
-      response
-        .status(200)
-        .json({ data: catalogo, error: false, msg: "Filmes encontrados" });
+      response.status(200).json(catalogo);
+      // .json({ data: catalogo, error: false, msg: "Filmes encontrados" });
     } catch (error) {
       response.status(400).json({
         data: error.message,
@@ -21,9 +20,8 @@ class FilmeController {
     try {
       const { id } = request.params;
       const catalogo = await filmeSchema.find({ _id: id });
-      response
-        .status(201)
-        .json({ data: catalogo, error: false, msg: "Filme encontrado" });
+      response.status(201).json(catalogo);
+      // .json({ data: catalogo, error: false, msg: "Filme encontrado" });
     } catch (error) {
       response.status(400).json({
         data: error.message,
@@ -36,11 +34,12 @@ class FilmeController {
   async cadastrar(request: Request, response: Response) {
     try {
       const catalogo = await filmeSchema.create(request.body);
-      response.status(201).json({
-        data: catalogo,
-        error: false,
-        msg: "Filme cadastrado com sucesso",
-      });
+      response.status(201).json(catalogo);
+      // .json({
+      //   data: catalogo,
+      //   error: false,
+      //   msg: "Filme cadastrado com sucesso",
+      // });
     } catch (error) {
       response.status(400).json({
         data: error.message,
@@ -54,11 +53,12 @@ class FilmeController {
     try {
       const { id } = request.params;
       const catalogo = await filmeSchema.findByIdAndDelete(id);
-      response.status(201).json({
-        data: catalogo,
-        error: false,
-        msg: "Filme excluído com sucesso",
-      });
+      response.status(201).json(catalogo);
+      // .json({
+      //   data: catalogo,
+      //   error: false,
+      //   msg: "Filme excluído com sucesso",
+      // });
     } catch (error) {
       response.status(400).json({
         data: error.message,
@@ -78,11 +78,12 @@ class FilmeController {
         useFindAndModify: false,
       });
 
-      response.status(204).json({
-        data: catalogo,
-        error: false,
-        msg: "Locação editada com sucesso",
-      });
+      response.status(204).json(catalogo);
+      // .json({
+      //   data: catalogo,
+      //   error: false,
+      //   msg: "Locação editada com sucesso",
+      // });
     } catch (error) {
       response.status(400).json({
         data: error.message,

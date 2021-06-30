@@ -4,26 +4,26 @@
 GET http://localhost:3000/
 
 ###
-GET http://localhost:3000/catalogo/listar-filme/60847528cd75e91510a13090
+GET http://localhost:3000/catalogo/listar-filme/6094747954a3a2456cabbc00
 
 ###
 POST http://localhost:3000/catalogo/cadastrar-filme
 Content-Type: application/json
 
 {
-    "titulo": "Toy Story",
+    "titulo": "Harry Potter",
     "status": "DISPONÍVEL",
-    "descricao": "Toy Story",
+    "descricao": "Harry Potter",
     "duracao":"1H30M",
     "genero": "Animação"
   
 }
 
 ###
-DELETE http://localhost:3000/catalogo/excluir-filme/60847b581a8124355caaa301
+DELETE http://localhost:3000/catalogo/excluir-filme/608da0462bedc12ac4fe0721
 
 ###
-PUT http://localhost:3000/catalogo/editar-filme/608da0462bedc12ac4fe0721
+PUT http://localhost:3000/catalogo/editar-filme/6094747954a3a2456cabbc00
 Content-Type: application/json
 
 {
@@ -50,21 +50,21 @@ Content-Type: application/json
 
 {
   "data": "2000/01/01",
-  "cliente": "608d9bb70ad973364c60b2b5",
-  "filme": "608da0462bedc12ac4fe0721"
+  "cliente": "609474db54a3a2456cabbc01",
+  "filme": "6094747954a3a2456cabbc00"
 }
 
 ###
-DELETE http://localhost:3000/catalogo/excluir-locacao/6084790bb3dc7a1bc07959df
+DELETE http://localhost:3000/catalogo/excluir-locacao/6094712954a3a2456cabbbff
 
 ###
-PUT http://localhost:3000/catalogo/editar-locacao/6087693eccf36b3180093839
+PUT http://localhost:3000/catalogo/editar-locacao/60ca9988a8274022d0794bb5
 Content-Type: application/json
 
 {
   "data": "2010/10/10",
-  "cliente": "60875c5936e03c181c4ab838",
-  "filme": "60847528cd75e91510a13090"
+  "cliente": "60cbe9752c8c2606fcc3d3b8",
+  "filme": "60cbe9172c8c2606fcc3d3b7"
 }
 
 # REQUEST USUARIO
@@ -78,11 +78,14 @@ POST http://localhost:3000/catalogo/cadastrar-usuario
 Content-Type: application/json
 
 {
-  "usuario": "admin",
-  "senha": "admin"
+  "usuario": "admin2",
+  "senha": "admin2"
 }
 
 # REQUEST FAVORITOS
+
+###
+GET http://localhost:3000/catalogo/favorito
 
 ###
 POST http://localhost:3000/catalogo/cadastrar-favorito
@@ -94,4 +97,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/catalogo/excluir-favorito?id=60875ea24ca0e825f422ebaa
+DELETE http://localhost:3000/catalogo/excluir-favorito/60cbea432c8c2606fcc3d3b9
